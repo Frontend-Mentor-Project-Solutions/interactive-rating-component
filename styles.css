@@ -1,0 +1,173 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"],
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+:root {
+  --clr-white: hsl(0, 100%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-gray-500: hsl(217, 12%, 63%);
+  --clr-gray-900: hsl(213, 19%, 18%);
+  --clr-gray-950: hsl(216, 12%, 8%);
+  --clr-orange-500: hsl(25, 97%, 53%);
+
+  --gradient-radial: radial-gradient(circle, #232a34 0%, #181e27 100%);
+
+  --font-family: "Overpass", sans-serif;
+
+  --fs-100: 0.875rem;
+  --fs-200: 1rem;
+  --fs-300: 1.5rem;
+
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --line-height-heading: 1.9;
+  --line-height-body: 1.4;
+
+  @media (min-width: 480px) {
+    --fs-100: 0.9375rem;
+    --fs-300: 1.75rem;
+
+    --line-height-heading: 2.2;
+    --line-height-body: 1.5;
+  }
+}
+
+:root {
+  --font-heading: var(--fw-bold) var(--fs-300) var(--font-family);
+  --font-body: var(--fw-regular) var(--fs-100) var(--font-family);
+}
+
+body {
+  font: var(--font-body);
+  line-height: var(--line-height-body);
+  background-color: var(--clr-gray-950);
+  color: var(--clr-gray-500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2 {
+  font: var(--font-heading);
+  line-height: var(--line-height-heading);
+  color: var(--clr-white);
+}
+
+main {
+  max-inline-size: 412px;
+  background-image: var(--gradient-radial);
+  margin-inline: 24px;
+  padding: 24px;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+}
+
+fieldset {
+  display: flex;
+  justify-content: space-around;
+}
