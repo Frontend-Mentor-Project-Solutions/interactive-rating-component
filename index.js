@@ -17,6 +17,13 @@ function updateScore(score) {
 }
 
 function updatePages() {
-  firstPage.style.display = "none";
-  secondPage.style.display = "flex";
+  if (document.startViewTransition) {
+    document.startViewTransition(() => {
+      firstPage.style.display = "none";
+      secondPage.style.display = "flex";
+    });
+  } else {
+    firstPage.style.display = "none";
+    secondPage.style.display = "flex";
+  }
 }
