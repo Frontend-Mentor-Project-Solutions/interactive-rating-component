@@ -135,6 +135,18 @@ textarea:not([rows]) {
 :root {
   --font-heading: var(--fw-bold) var(--fs-300) var(--font-family);
   --font-body: var(--fw-regular) var(--fs-100) var(--font-family);
+
+  --spacing-50: 0.5rem;
+  --spacing-100: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+
+  --border-radius-small: 1.25rem;
+  --border-radius-large: 2.5rem;
+
+  --option-size: clamp(2.6rem, 6vw, 3.2rem);
 }
 
 body {
@@ -154,18 +166,18 @@ h2 {
   color: var(--clr-white);
 }
 
-main {
-  max-inline-size: 412px;
+section {
+  max-inline-size: 25rem;
   background-image: var(--gradient-radial);
-  margin-inline: 24px;
-  padding: clamp(24px, 5vw, 32px);
-  border-radius: clamp(15px, 5vw, 30px);
+  margin-inline: var(--spacing-300);
+  padding: clamp(var(--spacing-300), 5vw, var(--spacing-400));
+  border-radius: clamp(1rem, 5vw, 2rem);
 
   &[data-page="second"] {
-    display: flex;
+    display: none;
     flex-flow: column;
     align-items: center;
-    gap: 16px;
+    gap: var(--spacing-200);
 
     h2 {
       line-height: 1;
@@ -180,26 +192,26 @@ main {
 .icon-wrapper {
   display: inline-block;
   background-color: var(--clr-gray-900);
-  border-radius: 40px;
-  margin-bottom: 8px;
+  border-radius: var(--border-radius-large);
+  margin-bottom: var(--spacing-50);
 }
 
 .icon-wrapper img {
-  padding: clamp(12px, 3vw, 16px);
+  padding: clamp(var(--spacing-100), 3vw, var(--spacing-200));
 }
 
 .score {
   color: var(--clr-orange-500);
   background-color: var(--clr-gray-900);
-  padding: 6px 12px;
-  border-radius: 20px;
-  margin-block: clamp(8px, 3vw, 16px);
+  padding: 0.375rem var(--spacing-100);
+  border-radius: var(--border-radius-small);
+  margin-block: clamp(var(--spacing-50), 3vw, var(--spacing-200));
 }
 
 form {
   display: flex;
   flex-flow: column;
-  gap: clamp(24px, 5vw, 32px);
+  gap: clamp(var(--spacing-300), 5vw, var(--spacing-400));
 }
 
 fieldset {
@@ -207,23 +219,34 @@ fieldset {
   justify-content: space-between;
 }
 
+legend,
 input {
   opacity: 0;
-  position: fixed;
+  position: absolute;
   width: 0;
+}
 
-  &:checked + label {
-    background-color: var(--clr-orange-500);
-    color: var(--clr-gray-900);
-  }
+input:checked + label {
+  background-color: var(--clr-orange-500);
+  color: var(--clr-gray-900);
+}
+
+input:focus-visible + label,
+button:focus-visible {
+  outline: 0.125rem solid var(--clr-white);
+}
+
+label,
+button {
+  transition: background 200ms ease;
 }
 
 label {
   background-color: var(--clr-gray-900);
   border: none;
-  width: clamp(42px, 6vw, 51px);
-  height: clamp(42px, 6vw, 51px);
-  border-radius: 40px;
+  width: var(--option-size);
+  height: var(--option-size);
+  border-radius: var(--border-radius-large);
   cursor: pointer;
 
   display: flex;
@@ -240,7 +263,7 @@ label {
 }
 
 button {
-  padding-block: 16px;
+  padding-block: var(--spacing-200);
   background-color: var(--clr-orange-500);
   border: none;
   cursor: pointer;
@@ -248,13 +271,23 @@ button {
   font-weight: var(--fw-bold);
   letter-spacing: 1.87px;
   color: var(--clr-gray-950);
-  border-radius: 22px;
+  border-radius: var(--border-radius-small);
 
   &:hover {
     background-color: var(--clr-white);
   }
+
+  &:active {
+    scale: 0.95;
+  }
+}
+
+form:invalid button {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .stack > * + * {
-  margin-top: 16px;
+  margin-top: var(--spacing-200);
 }
